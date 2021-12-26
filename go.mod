@@ -1,4 +1,4 @@
-module csstranspiler
+module initranspiler
 
 go 1.17
 

@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/alecthomas/repr"
-	"os"
+	"io/ioutil"
 
 	"github.com/alecthomas/participle/v2"
 	"github.com/alecthomas/participle/v2/lexer"
@@ -45,7 +45,9 @@ var parser = participle.MustBuild(&INI{},
 
 func main() {
 	ini := &INI{}
-	err := parser.Parse("", os.Stdin, ini)
+	content, _ := ioutil.ReadFile("sample.ini")
+
+	err := parser.ParseString("", string(content), ini)
 	if err != nil {
 		panic(err)
 	}
